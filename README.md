@@ -4,7 +4,7 @@
 
 ## 📋 Descrição
 
-O **CSL Times** é um portal de notícias moderno e responsivo, desenvolvido em PHP, que permite a publicação, edição e visualização de notícias, além de gerenciamento de usuários, anúncios e categorias. O sistema conta com autenticação, experiência mobile aprimorada, carrossel de anúncios, cotação de moedas em tempo real e previsão do tempo.
+O **CSL Times** é um portal de notícias moderno e responsivo, desenvolvido em PHP, que permite a publicação, edição e visualização de notícias, além de gerenciamento de usuários, anúncios e categorias. O sistema conta com autenticação, experiência mobile aprimorada, cotação de moedas em tempo real e previsão do tempo.
 
 ## ✨ Funcionalidades
 
@@ -12,7 +12,6 @@ O **CSL Times** é um portal de notícias moderno e responsivo, desenvolvido em 
 - **Publicação, edição e exclusão de notícias** (com upload de imagem ou URL)
 - **Gestão de anúncios** (para anunciantes)
 - **Categorias e profissões** (filtro e organização)
-- **Carrossel de anúncios** (vertical no desktop, horizontal no mobile)
 - **Cotação de moedas em tempo real** (USD, EUR, BTC, GBP)
 - **Previsão do tempo** (São Paulo)
 - **Design responsivo** (mobile e desktop)
@@ -54,22 +53,31 @@ ProjetoWeb2/
 └── README.md
 ```
 
-## 🚀 Instalação e Configuração
+## 🚀 Instalação e Configuração (XAMPP)
 
-1. **Clone o repositório**
-   ```bash
-   git clone [URL_DO_REPOSITORIO]
-   cd ProjetoWeb2
+1. **Inicie Apache e MySQL** no painel do XAMPP.
+
+2. **Importe o banco de dados**
+   ```powershell
+   Get-Content database\setup.sql -Raw | C:\xampp\mysql\bin\mysql.exe -u root
    ```
+   Isso cria o banco `bdcrud` com tabelas e dados de demonstração.
 
-2. **Configure o banco de dados**
-   - Crie o banco e as tabelas conforme instruções do README original.
+3. **Credenciais do banco** (padrão XAMPP) em `classes/BancoDeDados.php`:
+   - Host: `localhost`
+   - Banco: `bdcrud`
+   - Usuário: `root`
+   - Senha: *(vazia)*
 
-3. **Ajuste as credenciais em `config/config.php`**
+4. **Acesse o portal:** [http://localhost/Projetos/CSLTimes/](http://localhost/Projetos/CSLTimes/)
 
-4. **Dê permissão de escrita à pasta `uploads/`**
+### Usuários de demonstração (senha: `123456`)
 
-5. **Acesse em** `http://localhost/ProjetoWeb2`
+| Email | Perfil |
+|-------|--------|
+| `jornalista@csltimes.local` | Jornalista (publica notícias) |
+| `anunciante@csltimes.local` | Anunciante (gerencia anúncios) |
+| `leitor@csltimes.local` | Leitor |
 
 ## 👥 Como Usar
 

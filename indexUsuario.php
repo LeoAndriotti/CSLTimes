@@ -7,7 +7,6 @@ include_once 'config/config.php'; // Configurações do banco de dados
 include_once 'classes/Usuario.php'; // Classe de usuário
 include_once 'classes/Noticias.php'; // Classe de notícias
 include_once 'classes/Categoria.php'; // Classe de categorias
-include_once 'classes/Anuncio.php'; // Classe de anúncios
 // Inclui o componente de card de notícia reutilizável
 include_once 'components/noticiaCard.php';
 
@@ -15,7 +14,6 @@ include_once 'components/noticiaCard.php';
 $usuario = new Usuario($banco);
 $noticias = new Noticias($banco);
 $categoria = new Categoria($banco);
-$anuncio = new Anuncio($banco);
 
 // Recupera o usuário logado
 $tipo_usuario = 'usuario'; // valor padrão
@@ -32,7 +30,6 @@ if (isset($_SESSION['usuario_id'])) {
 
 // Busca todas as notícias do banco
 $todas_noticias = $noticias->ler();
-$anuncios_ativos = $anuncio->lerAtivos();
 
 // Buscar autores e categorias para o filtro
 $autores = $usuario->ler();
@@ -98,8 +95,6 @@ $todas_noticias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div id="moedas-mobile-container" class="moedas-mobile-container moedas-container-unico">
       <?php include './components/moedas.php'; ?>
     </div>
-    <!-- Carrossel horizontal de anúncios abaixo do header removido -->
-    <!-- Menu de moedas (reutilizável) -->
     <!-- Botões de navegação do usuário no desktop -->
     <div class="usuario-nav-desktop">
       <?php if (strtolower($tipo_usuario) === 'jornalista'): ?>
@@ -188,11 +183,10 @@ $todas_noticias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Rodapé fixo com redes sociais e direitos autorais -->
     <footer class="footer-main" style="display: none;">
         <div class="social-links">
-            <a href="https://br.linkedin.com" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/leonardo-andriotti-da-veiga-de-moura/" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://pt-br.facebook.com" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/?gl=BR" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://x.com/" class="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/leo.andriotti/" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/LeoAndriotti" class="github" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <div class="copyright">
             &copy; <?php echo date('Y'); ?> CSL Times. Todos os direitos reservados.
